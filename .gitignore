@@ -1,0 +1,31 @@
+# Android build outputs
+app/build/
+*.apk
+*.idsig
+*.ap_
+bin/
+gen/
+out/
+
+# Keystores
+*.keystore
+
+# Temporary and local test files
+*.png
+*.jpg
+*.jpeg
+!app/src/main/res/**/*.png
+!app/src/main/assets/**/*.png
+test_curl.py
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.bak
