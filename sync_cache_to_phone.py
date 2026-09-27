@@ -69,11 +69,20 @@ def main():
     device_id = devices[0]
     print(f"[+] 已連線設備: {device_id} (共 {len(devices)} 台設備)")
 
-    # Source cache folder
-    pc_cache = Path("../LegecloPlayer_Lite/cache")
-    if not pc_cache.exists():
-        pc_cache = Path("./cache")
-    if not pc_cache.exists():
+    # Source cache folder candidates
+    cache_candidates = [
+        Path(r"D:\LegecloPlayer_Lite\LegecloPlayer_Lite\cache"),
+        Path(r"D:\LegecloPlayer_Lite\cache"),
+        Path("../LegecloPlayer_Lite/cache"),
+        Path("./cache")
+    ]
+    pc_cache = None
+    for cand in cache_candidates:
+        if cand.exists() and any(cand.iterdir()):
+            pc_cache = cand
+            break
+
+    if not pc_cache:
         print("❌ 找不到電腦端的 cache 資料夾！請確認 LegecloPlayer_Lite/cache 存在。")
         input("\n按 Enter 鍵關閉...")
         return 1
